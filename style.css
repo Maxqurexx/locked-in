@@ -1,17 +1,18 @@
 :root {
-  --bg: #050507;
+  --bg: #060504;
   --card: rgba(255, 255, 255, 0.035);
   --line: rgba(255, 255, 255, 0.07);
-  --text: #f2f2f5;
-  --muted: #7d7d8c;
-  --a1: #8b5cff;
-  --a2: #22e1d0;
-  --glow: rgba(139, 92, 255, 0.45);
+  --text: #f6f1e4;
+  --muted: #8a8172;
+  /* 24k gold */
+  --a1: #ffe680;
+  --a2: #e0a400;
+  --glow: rgba(255, 196, 40, 0.45);
   --font: -apple-system, "SF Pro Display", "Inter", "Segoe UI", Roboto, sans-serif;
 }
 
-/* Over the goal: gold */
-body.monster { --a1: #ffcc4d; --a2: #ff6b3d; --glow: rgba(255, 170, 60, 0.5); }
+/* Over the goal: the gold flares up brighter */
+body.monster { --a1: #fff6c8; --a2: #ffb300; --glow: rgba(255, 210, 80, 0.75); }
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html, body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font); }
@@ -44,7 +45,7 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 .top { display: flex; align-items: center; justify-content: space-between; height: 44px; }
 .logo { font-weight: 800; letter-spacing: .22em; font-size: 13px; display: flex; align-items: center; gap: 8px; }
 .logo b { background: linear-gradient(90deg, var(--a1), var(--a2)); -webkit-background-clip: text; background-clip: text; color: transparent; margin-left: 4px; }
-.logo .dot { width: 8px; height: 8px; border-radius: 50%; background: #3a3a46; box-shadow: 0 0 0 0 transparent; transition: .3s; }
+.logo .dot { width: 8px; height: 8px; border-radius: 50%; background: #3a352a; box-shadow: 0 0 0 0 transparent; transition: .3s; }
 body.running .logo .dot { background: var(--a2); box-shadow: 0 0 12px var(--a2); animation: blink 1.6s infinite; }
 .chips { display: flex; gap: 8px; }
 .chip {
@@ -52,7 +53,7 @@ body.running .logo .dot { background: var(--a2); box-shadow: 0 0 12px var(--a2);
   background: var(--card); border: 1px solid var(--line); font-weight: 700; font-size: 14px;
   font-variant-numeric: tabular-nums;
 }
-.chip svg { width: 16px; height: 16px; color: #ff8a3d; fill: rgba(255, 138, 61, .25); }
+.chip svg { width: 16px; height: 16px; color: var(--a1); fill: color-mix(in srgb, var(--a2) 30%, transparent); filter: drop-shadow(0 0 4px var(--glow)); }
 .chip.icon { width: 34px; padding: 0; justify-content: center; }
 .chip.icon svg { color: var(--muted); fill: none; }
 
@@ -92,12 +93,12 @@ body.running .status { color: var(--a2); text-shadow: 0 0 12px var(--a2); }
 .main-btn {
   width: 100%; margin: 22px 0 18px; padding: 16px 18px; border-radius: 22px; display: flex; align-items: center; gap: 14px;
   text-align: left; background: linear-gradient(135deg, var(--a1), var(--a2));
-  color: #08080b; box-shadow: 0 14px 40px var(--glow), inset 0 1px 0 rgba(255, 255, 255, .35);
+  color: #140f05; box-shadow: 0 14px 40px var(--glow), inset 0 1px 0 rgba(255, 255, 255, .35);
   transition: transform .15s, box-shadow .3s, background .3s;
 }
 .main-btn:active { transform: scale(.98); }
 body.running .main-btn {
-  background: #121218; color: var(--text);
+  background: #12100b; color: var(--text);
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--a2) 45%, transparent), 0 14px 40px rgba(0, 0, 0, .5);
 }
 .btn-icon {
@@ -181,7 +182,7 @@ body.running .btn-icon { background: color-mix(in srgb, var(--a2) 16%, transpare
 .sheet { position: fixed; inset: 0; z-index: 10; background: rgba(0, 0, 0, .55); backdrop-filter: blur(6px); display: flex; align-items: flex-end; }
 .sheet-card {
   width: 100%; max-width: 480px; margin: 0 auto; padding: 10px 20px calc(24px + env(safe-area-inset-bottom));
-  border-radius: 26px 26px 0 0; background: #101016; border: 1px solid var(--line); animation: up .3s cubic-bezier(.2, .8, .2, 1);
+  border-radius: 26px 26px 0 0; background: #100e0a; border: 1px solid var(--line); animation: up .3s cubic-bezier(.2, .8, .2, 1);
 }
 .grabber { width: 40px; height: 5px; border-radius: 3px; background: #2b2b36; margin: 0 auto 14px; }
 .sheet-card h2 { margin: 0 0 16px; font-size: 20px; }
@@ -195,7 +196,7 @@ body.running .btn-icon { background: color-mix(in srgb, var(--a2) 16%, transpare
 }
 .file-btn input { display: none; }
 .sheet-actions .danger { color: #ff5c7a; }
-.close { width: 100%; margin-top: 8px; padding: 14px; border-radius: 14px; background: linear-gradient(135deg, var(--a1), var(--a2)); color: #08080b; font-weight: 800; }
+.close { width: 100%; margin-top: 8px; padding: 14px; border-radius: 14px; background: linear-gradient(135deg, var(--a1), var(--a2)); color: #140f05; font-weight: 800; }
 
 .toast {
   position: fixed; left: 50%; top: calc(14px + env(safe-area-inset-top)); z-index: 20; transform: translate(-50%, -140%);
