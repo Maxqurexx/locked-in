@@ -1,6 +1,6 @@
 // Keeps the app working offline. Network first, so an update shows up as soon as there is a connection.
-const CACHE = 'lockedin-v1';
-const FILES = ['./', 'index.html', 'style.css', 'app.js', 'manifest.webmanifest', 'icon-180.png', 'icon-192.png', 'icon-512.png'];
+const CACHE = 'lockedin-v2';
+const FILES = ['./', 'index.html', 'style.css', 'app.js', 'manifest.webmanifest', 'icon-gold-180.png', 'icon-gold-192.png', 'icon-gold-512.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));
